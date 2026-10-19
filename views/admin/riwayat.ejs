@@ -1,0 +1,49 @@
+<%- include('../partials/head', { title: 'Riwayat Antrean' }) %>
+<%- include('../partials/navbar', { user: user }) %>
+
+<body class="bg-gray-50 text-gray-800 font-sans pb-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+    
+    <div class="flex justify-between items-end mb-6">
+      <div>
+        <h1 class="text-2xl font-bold text-gray-800">Riwayat Antrean</h1>
+        <p class="text-sm text-gray-500 mt-1">Data rekam antrean pasien di hari-hari sebelumnya</p>
+      </div>
+      
+      <div class="flex gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">Pilih Tanggal</label>
+          <input type="date" id="filter-tanggal" class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+        </div>
+        <button onclick="loadRiwayat()" class="self-end bg-gray-800 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition-colors">
+          Tampilkan
+        </button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[800px]">
+          <thead>
+            <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
+              <th class="px-5 py-4 font-semibold">Waktu & Tanggal</th>
+              <th class="px-5 py-4 font-semibold">Nomor</th>
+              <th class="px-5 py-4 font-semibold">Pasien</th>
+              <th class="px-5 py-4 font-semibold">Keluhan</th>
+              <th class="px-5 py-4 font-semibold text-center">Prioritas</th>
+              <th class="px-5 py-4 font-semibold text-center">Status Akhir</th>
+            </tr>
+          </thead>
+          <tbody id="tabel-riwayat" class="text-sm divide-y divide-gray-100">
+            <tr>
+              <td colspan="6" class="px-5 py-10 text-center text-gray-500">Pilih tanggal dan klik Tampilkan.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/admin-riwayat.js"></script>
+</body>
+</html>

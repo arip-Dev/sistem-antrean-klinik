@@ -1,0 +1,78 @@
+<%- include('../partials/head', { title: 'Display Antrean' }) %>
+<body class="bg-blue-50 text-gray-800 font-sans overflow-hidden">
+  <div class="display-tv w-full h-screen flex flex-col p-6">
+    <!-- Header -->
+    <header class="w-full flex items-center justify-between bg-white rounded-2xl shadow-sm px-8 py-4 mb-6">
+      <div class="flex items-center gap-4">
+        <span class="text-5xl">🏥</span>
+        <div>
+          <h1 class="text-3xl font-bold text-gray-800">Klinik SiAntre</h1>
+          <p class="text-gray-500 text-lg">Sistem Pelayanan Prioritas</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="text-right">
+          <div id="clock" class="text-4xl font-bold text-blue-600">00:00:00</div>
+          <div id="date" class="text-gray-500 text-lg mt-1">Hari, Tanggal</div>
+        </div>
+        <button id="btn-suara" onclick="aktifkanSuara()" class="flex items-center gap-2 bg-red-100 text-red-700 border-2 border-red-300 px-4 py-3 rounded-xl font-bold text-sm hover:bg-red-200 transition-colors animate-pulse">
+          🔇 Aktifkan Suara
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full grid grid-cols-12 gap-6">
+      <!-- Left: Sedang Dipanggil -->
+      <div class="col-span-5 h-full flex flex-col">
+        <div class="bg-white rounded-3xl shadow-lg border border-blue-100 flex-1 flex flex-col items-center justify-center p-8 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-3 bg-blue-500"></div>
+          
+          <h2 class="text-2xl font-semibold text-gray-500 mb-6 uppercase tracking-wider">Antrean Saat Ini</h2>
+          
+          <div id="dipanggil-box" class="w-full text-center transition-all duration-500">
+            <div id="dipanggil-nomor" class="text-9xl font-black text-gray-800 mb-6">-</div>
+            <div id="dipanggil-nama" class="text-3xl font-bold text-gray-600 mb-4">Belum ada panggilan</div>
+            <div id="dipanggil-badge" class="inline-block mt-4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Antrean Menunggu -->
+      <div class="col-span-7 h-full flex flex-col">
+        <div class="bg-white rounded-3xl shadow-lg border border-gray-100 flex-1 flex flex-col overflow-hidden">
+          <div class="bg-gray-800 text-white px-8 py-5 flex justify-between items-center">
+            <h2 class="text-xl font-bold tracking-wide">Daftar Menunggu</h2>
+            <div class="flex items-center gap-2">
+              <span id="koneksi-status" class="w-3 h-3 rounded-full bg-red-500"></span>
+            </div>
+          </div>
+          
+          <div class="flex-1 overflow-hidden p-6 relative">
+            <table class="w-full text-left">
+              <thead>
+                <tr class="text-gray-400 text-lg border-b-2 border-gray-100">
+                  <th class="pb-3 w-32">Nomor</th>
+                  <th class="pb-3">Nama Pasien</th>
+                  <th class="pb-3 text-center">Prioritas</th>
+                </tr>
+              </thead>
+              <tbody id="tabel-menunggu" class="text-2xl divide-y divide-gray-100">
+                <!-- Rows injected by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <!-- Footer Marquee -->
+    <footer class="w-full bg-blue-600 text-white rounded-xl mt-6 py-3 px-6 shadow-md overflow-hidden flex items-center">
+      <span class="font-bold mr-4 shrink-0">INFO:</span>
+      <marquee class="text-lg font-medium tracking-wide">Harap siapkan kartu identitas Anda. Prioritas diberikan kepada pasien Gawat Darurat (Merah) dan Darurat (Kuning). Terima kasih atas pengertian Anda.</marquee>
+    </footer>
+  </div>
+
+  <script src="/js/admin-display.js"></script>
+</body>
+</html>
